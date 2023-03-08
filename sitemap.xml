@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.ayasuki.cc/tags/index.html</loc>
+    <loc>https://www.icemilk.cc/tags/index.html</loc>
     
     <lastmod>2023-01-17</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.ayasuki.cc/link/index.html</loc>
+    <loc>https://www.icemilk.cc/link/index.html</loc>
     
     <lastmod>2023-01-17</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.ayasuki.cc/categories/index.html</loc>
+    <loc>https://www.icemilk.cc/categories/index.html</loc>
     
     <lastmod>2023-01-17</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://www.ayasuki.cc/archives/16107.html</loc>
+    <loc>https://www.icemilk.cc/archives/16107.html</loc>
     
     <lastmod>2023-01-17</lastmod>
     
@@ -39,8 +39,8 @@
   
 
   <url>
-    <loc>https://www.ayasuki.cc/</loc>
-    <lastmod>2023-01-20</lastmod>
+    <loc>https://www.icemilk.cc/</loc>
+    <lastmod>2023-03-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -49,8 +49,8 @@
 
   
   <url>
-    <loc>https://www.ayasuki.cc/categories/%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2023-01-20</lastmod>
+    <loc>https://www.icemilk.cc/categories/%E6%97%A5%E5%B8%B8/</loc>
+    <lastmod>2023-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
