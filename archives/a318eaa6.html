@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE | 雾雨魔法店</title><meta name="author" content="aya"><meta name="copyright" content="aya"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="写在前面本篇内容会快速介绍q30pro的刷机步骤，想要了解详细步骤的请移步 Re: MX 的自留地 案例机器是256M内存的老版本，512M未经过测试，但论坛里有人验证过512M机器的刷机步骤没有什么不同 准备工作本教程所有用到的文件均在这里，提前下载就行：https:&#x2F;&#x2F;wwuy.lanzoue.com&#x2F;izE5L2mc1d4f 从官方系统刷到过度固件登录后台：http:&#x2F;&#x2F;192.168.10">
+<meta property="og:type" content="article">
+<meta property="og:title" content="捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE">
+<meta property="og:url" content="https://www.icemilk.cc/archives/a318eaa6.html">
+<meta property="og:site_name" content="雾雨魔法店">
+<meta property="og:description" content="写在前面本篇内容会快速介绍q30pro的刷机步骤，想要了解详细步骤的请移步 Re: MX 的自留地 案例机器是256M内存的老版本，512M未经过测试，但论坛里有人验证过512M机器的刷机步骤没有什么不同 准备工作本教程所有用到的文件均在这里，提前下载就行：https:&#x2F;&#x2F;wwuy.lanzoue.com&#x2F;izE5L2mc1d4f 从官方系统刷到过度固件登录后台：http:&#x2F;&#x2F;192.168.10">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg">
+<meta property="article:published_time" content="2025-01-30T11:33:52.000Z">
+<meta property="article:modified_time" content="2025-01-30T12:17:33.835Z">
+<meta property="article:author" content="aya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg"><link rel="shortcut icon" href="https://pic.icemilk.cc/pic/1/2023/10/4qvD7drnQY.jpg"><link rel="canonical" href="https://www.icemilk.cc/archives/a318eaa6.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-01-30 20:17:33'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-image: url(https://pic.icemilk.cc/pic/1/2023/10/BCs0pJvHqF.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://pic.icemilk.cc/pic/1/2023/10/4qvD7drnQY.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">雾雨魔法店</span></a><a class="nav-page-title" href="/"><span class="site-name">捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-30T11:33:52.000Z" title="发表于 2025-01-30 19:33:52">2025-01-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-30T12:17:33.835Z" title="更新于 2025-01-30 20:17:33">2025-01-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇内容会快速介绍q30pro的刷机步骤，想要了解详细步骤的请移步 <a href="https://mary.kevinmx.top/default/JCG-Q30-Pro-Neo.html" target="_blank">Re: MX 的自留地</a></p>
+<p>案例机器是256M内存的老版本，512M未经过测试，但论坛里有人验证过512M机器的刷机步骤没有什么不同</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>本教程所有用到的文件均在这里，提前下载就行：<a href="https://wwuy.lanzoue.com/izE5L2mc1d4f" target="_blank">https://wwuy.lanzoue.com/izE5L2mc1d4f</a></p>
+<h1 id="从官方系统刷到过度固件"><a href="#从官方系统刷到过度固件" class="headerlink" title="从官方系统刷到过度固件"></a>从官方系统刷到过度固件</h1><p>登录后台：<a target="_blank" rel="noopener" href="http://192.168.10.1,初始用户名密码见路由器背面./">http://192.168.10.1，初始用户名密码见路由器背面。</a></p>
+<p>进入<strong>高级设置</strong>-&gt;<strong>升级固件</strong>，上传工具包中的过度固件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">immortalwrt-mediatek-mt7981-mt7981-spim-nand-rfb-squashfs-sysupgrade.bin</span><br></pre></td></tr></table></figure>
+<p>取消勾选保留配置，确认升级后路由器会自动重启到ImmortalWrt。</p>
+<p>237大佬的过渡固件在开机后会自动刷入U-Boot，重启后等待2分钟左右即可。</p>
+<h1 id="刷入-LEDE"><a href="#刷入-LEDE" class="headerlink" title="刷入 LEDE"></a>刷入 LEDE</h1><p>断电，按住Reset键的同时上电，不要松手，等待5s左右，待LED灯由红色闪烁变为蓝色常亮即可松开Reset键，此时会进入U-Boot 的恢复模式。</p>
+<p>手动将电脑ip设置为192.168.1.0&#x2F;24网段的ip，例如192.168.1.2，就可以进入后台：<a target="_blank" rel="noopener" href="http://192.168.1.1/">http://192.168.1.1。</a></p>
+<p>这里就可以任意刷论坛上的固件了，我在刷入ImmortalWrt的官方固件后WiFi连上几十秒会自动断，所以我自己编译了一个LEDE的固件，目前正在作为主力路由使用中，你也可以尝试其他固件。</p>
+<p>作为演示，这里选择我自己编译的LEDE固件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openwrt-mediatek-filogic-jcg_q30-pro-squashfs-sysupgrade.bin</span><br></pre></td></tr></table></figure>
+
+<p>刷入，等待重启即可。</p>
+<h2 id="手动刷入-U-Boot（非必需）"><a href="#手动刷入-U-Boot（非必需）" class="headerlink" title="手动刷入 U-Boot（非必需）"></a>手动刷入 U-Boot（非必需）</h2><p>如果你不能正常进入U-Boot，可尝试在过渡固件中手动刷入U-Boot，具体的操作如下：</p>
+<p>过渡固件的默认用户名和密码为 <strong>root</strong> 和 <strong>password</strong>。</p>
+<p>使用WinSCP将下面工具包中的文件传到路由器的 <strong>&#x2F;tmp</strong> 目录下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mt7981-jcg_q30-fip-expand.bin</span><br></pre></td></tr></table></figure>
+
+<p>ssh登录路由器，输入下面命令刷入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtd write /tmp/mt7981-jcg_q30-fip-expand.bin FIP</span><br></pre></td></tr></table></figure>
+
+<p>刷写完毕后输入下面命令断电：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poweroff</span><br></pre></td></tr></table></figure>
+
+<p>此时再尝试上一步的方法进入U-Boot的恢复界面即可。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.icemilk.cc">aya</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.icemilk.cc/archives/a318eaa6.html">https://www.icemilk.cc/archives/a318eaa6.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.icemilk.cc" target="_blank">雾雨魔法店</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/archives/313ffa09.html" title="在Linux服务器上部署饥荒专用服务器保姆级教程"><img class="cover" src="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">在Linux服务器上部署饥荒专用服务器保姆级教程</div></div><div class="info-2"><div class="info-item-1">写在前面上一篇饥荒服务器的搭建教程写的不够详细，这篇文章将细节化服务器的搭建过程 准备工作 ssh工具 配置不低于2C2G的服务器(带洞穴) 一颗折腾的心  服务端搭建添加用户使用root登录服务器，用下面这行建立一个新用户，设置好密码后一路换行就行，后续管理服务器只会用到这个账户 1adduser dstserver 安装sudo 1apt install sudo 编辑sudo配置，让dstserver使用sudo时不需要输入密码 1nano /etc/sudoers 方向键移动光标，找到root ALL&#x3D;(ALL:ALL) ALL这一行，在下面插入一行dstserver ALL&#x3D;(ALL) NOPASSWD:ALL，分别按Ctrl + x、y、换行保存退出。现在可以将ssh登录信息改为dstserver了，以后都用这个用户登录服务器，这么做可以让sftp上传的文件都归属用户dstserver，可以规避一些文件权限造成的问题 安装依赖使用用户dstserver登录服务器 123sudo dpkg --add-architecture i386sudo...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://pic.icemilk.cc/pic/1/2023/10/4qvD7drnQY.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">aya</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/trip14nm"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">~随便看看~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E5%AE%98%E6%96%B9%E7%B3%BB%E7%BB%9F%E5%88%B7%E5%88%B0%E8%BF%87%E5%BA%A6%E5%9B%BA%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">从官方系统刷到过度固件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B7%E5%85%A5-LEDE"><span class="toc-number">4.</span> <span class="toc-text">刷入 LEDE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%88%B7%E5%85%A5-U-Boot%EF%BC%88%E9%9D%9E%E5%BF%85%E9%9C%80%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">手动刷入 U-Boot（非必需）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/a318eaa6.html" title="捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE"><img src="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE"/></a><div class="content"><a class="title" href="/archives/a318eaa6.html" title="捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE">捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE</a><time datetime="2025-01-30T11:33:52.000Z" title="发表于 2025-01-30 19:33:52">2025-01-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/313ffa09.html" title="在Linux服务器上部署饥荒专用服务器保姆级教程"><img src="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Linux服务器上部署饥荒专用服务器保姆级教程"/></a><div class="content"><a class="title" href="/archives/313ffa09.html" title="在Linux服务器上部署饥荒专用服务器保姆级教程">在Linux服务器上部署饥荒专用服务器保姆级教程</a><time datetime="2024-12-04T13:50:22.000Z" title="发表于 2024-12-04 21:50:22">2024-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/f5700483.html" title="适用于Steam各功能分流的Clash规则"><img src="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="适用于Steam各功能分流的Clash规则"/></a><div class="content"><a class="title" href="/archives/f5700483.html" title="适用于Steam各功能分流的Clash规则">适用于Steam各功能分流的Clash规则</a><time datetime="2024-12-02T04:05:23.000Z" title="发表于 2024-12-02 12:05:23">2024-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/16107.html" title="叒搬家啦"><img src="https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="叒搬家啦"/></a><div class="content"><a class="title" href="/archives/16107.html" title="叒搬家啦">叒搬家啦</a><time datetime="2023-01-17T08:37:57.000Z" title="发表于 2023-01-17 16:37:57">2023-01-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://pic.icemilk.cc/pic/1/2023/10/88Mpzw02wV.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By aya</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://main--icemilk-talk.netlify.app/.netlify/functions/twikoo',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://main--icemilk-talk.netlify.app/.netlify/functions/twikoo',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
