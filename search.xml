@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE</title>
+    <url>/archives/a318eaa6.html</url>
+    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇内容会快速介绍q30pro的刷机步骤，想要了解详细步骤的请移步 <a href="https://mary.kevinmx.top/default/JCG-Q30-Pro-Neo.html" target="_blank">Re: MX 的自留地</a></p>
+<p>案例机器是256M内存的老版本，512M未经过测试，但论坛里有人验证过512M机器的刷机步骤没有什么不同</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>本教程所有用到的文件均在这里，提前下载就行：<a href="https://wwuy.lanzoue.com/izE5L2mc1d4f" target="_blank">https://wwuy.lanzoue.com/izE5L2mc1d4f</a></p>
+<h1 id="从官方系统刷到过度固件"><a href="#从官方系统刷到过度固件" class="headerlink" title="从官方系统刷到过度固件"></a>从官方系统刷到过度固件</h1><p>登录后台：<a href="http://192.168.10.1/">http://192.168.10.1</a> ，初始用户名密码见路由器背面。</p>
+<p>进入<strong>高级设置</strong>-&gt;<strong>升级固件</strong>，上传工具包中的过度固件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">immortalwrt-mediatek-mt7981-mt7981-spim-nand-rfb-squashfs-sysupgrade.bin</span><br></pre></td></tr></table></figure>
+<p>取消勾选保留配置，确认升级后路由器会自动重启到ImmortalWrt。</p>
+<p>237大佬的过渡固件在开机后会自动刷入U-Boot，重启后等待2分钟左右即可。</p>
+<h1 id="刷入-LEDE"><a href="#刷入-LEDE" class="headerlink" title="刷入 LEDE"></a>刷入 LEDE</h1><p>断电，按住Reset键的同时上电，不要松手，等待5s左右，待LED灯由红色闪烁变为蓝色常亮即可松开Reset键，此时会进入U-Boot 的恢复模式。</p>
+<p>手动将电脑ip设置为 192.168.1.0&#x2F;24 网段的ip，例如 192.168.1.2，就可以进入后台：<a href="http://192.168.1.1/">http://192.168.1.1</a> 。</p>
+<p>这里就可以任意刷论坛上的固件了，我在刷入ImmortalWrt的官方固件后WiFi连上几十秒会自动断，所以我自己编译了一个LEDE的固件，目前正在作为主力路由使用中，你也可以尝试其他固件。</p>
+<p>作为演示，这里选择我自己编译的LEDE固件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openwrt-mediatek-filogic-jcg_q30-pro-squashfs-sysupgrade.bin</span><br></pre></td></tr></table></figure>
+
+<p>刷入，等待重启即可。</p>
+<h2 id="手动刷入-U-Boot（非必需）"><a href="#手动刷入-U-Boot（非必需）" class="headerlink" title="手动刷入 U-Boot（非必需）"></a>手动刷入 U-Boot（非必需）</h2><p>如果你不能正常进入U-Boot，可尝试在过渡固件中手动刷入U-Boot，具体的操作如下：</p>
+<p>过渡固件的默认用户名和密码为 <strong>root</strong> 和 <strong>password</strong>。</p>
+<p>使用WinSCP将下面工具包中的文件传到路由器的 <strong>&#x2F;tmp</strong> 目录下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mt7981-jcg_q30-fip-expand.bin</span><br></pre></td></tr></table></figure>
+
+<p>ssh登录路由器，输入下面命令刷入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mtd write /tmp/mt7981-jcg_q30-fip-expand.bin FIP</span><br></pre></td></tr></table></figure>
+
+<p>刷写完毕后输入下面命令断电：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">poweroff</span><br></pre></td></tr></table></figure>
+
+<p>此时再尝试上一步的方法进入U-Boot的恢复界面即可。</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+  </entry>
+  <entry>
     <title>在Linux服务器上部署饥荒专用服务器保姆级教程</title>
     <url>/archives/313ffa09.html</url>
     <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>上一篇饥荒服务器的搭建教程写的不够详细，这篇文章将细节化服务器的搭建过程</p>
@@ -64,41 +99,6 @@
     <title>叒搬家啦</title>
     <url>/archives/16107.html</url>
     <content><![CDATA[<p>折腾来折腾去还是回到hexo了，这次换了<a href="https://butterfly.js.org/">butterfly</a>主题，慢慢倒腾吧。<br>老家: <a href="https://trip7nm.github.io/">冰牛奶</a></p>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>捷稀 JCG Q30 Pro 免拆从原厂固件刷到LEDE</title>
-    <url>/archives/a318eaa6.html</url>
-    <content><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本篇内容会快速介绍q30pro的刷机步骤，想要了解详细步骤的请移步 <a href="https://mary.kevinmx.top/default/JCG-Q30-Pro-Neo.html" target="_blank">Re: MX 的自留地</a></p>
-<p>案例机器是256M内存的老版本，512M未经过测试，但论坛里有人验证过512M机器的刷机步骤没有什么不同</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>本教程所有用到的文件均在这里，提前下载就行：<a href="https://wwuy.lanzoue.com/izE5L2mc1d4f" target="_blank">https://wwuy.lanzoue.com/izE5L2mc1d4f</a></p>
-<h1 id="从官方系统刷到过度固件"><a href="#从官方系统刷到过度固件" class="headerlink" title="从官方系统刷到过度固件"></a>从官方系统刷到过度固件</h1><p>登录后台：<a href="http://192.168.10.1/">http://192.168.10.1</a> ，初始用户名密码见路由器背面。</p>
-<p>进入<strong>高级设置</strong>-&gt;<strong>升级固件</strong>，上传工具包中的过度固件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">immortalwrt-mediatek-mt7981-mt7981-spim-nand-rfb-squashfs-sysupgrade.bin</span><br></pre></td></tr></table></figure>
-<p>取消勾选保留配置，确认升级后路由器会自动重启到ImmortalWrt。</p>
-<p>237大佬的过渡固件在开机后会自动刷入U-Boot，重启后等待2分钟左右即可。</p>
-<h1 id="刷入-LEDE"><a href="#刷入-LEDE" class="headerlink" title="刷入 LEDE"></a>刷入 LEDE</h1><p>断电，按住Reset键的同时上电，不要松手，等待5s左右，待LED灯由红色闪烁变为蓝色常亮即可松开Reset键，此时会进入U-Boot 的恢复模式。</p>
-<p>手动将电脑ip设置为 192.168.1.0&#x2F;24 网段的ip，例如 192.168.1.2，就可以进入后台：<a href="http://192.168.1.1/">http://192.168.1.1</a> 。</p>
-<p>这里就可以任意刷论坛上的固件了，我在刷入ImmortalWrt的官方固件后WiFi连上几十秒会自动断，所以我自己编译了一个LEDE的固件，目前正在作为主力路由使用中，你也可以尝试其他固件。</p>
-<p>作为演示，这里选择我自己编译的LEDE固件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openwrt-mediatek-filogic-jcg_q30-pro-squashfs-sysupgrade.bin</span><br></pre></td></tr></table></figure>
-
-<p>刷入，等待重启即可。</p>
-<h2 id="手动刷入-U-Boot（非必需）"><a href="#手动刷入-U-Boot（非必需）" class="headerlink" title="手动刷入 U-Boot（非必需）"></a>手动刷入 U-Boot（非必需）</h2><p>如果你不能正常进入U-Boot，可尝试在过渡固件中手动刷入U-Boot，具体的操作如下：</p>
-<p>过渡固件的默认用户名和密码为 <strong>root</strong> 和 <strong>password</strong>。</p>
-<p>使用WinSCP将下面工具包中的文件传到路由器的 <strong>&#x2F;tmp</strong> 目录下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mt7981-jcg_q30-fip-expand.bin</span><br></pre></td></tr></table></figure>
-
-<p>ssh登录路由器，输入下面命令刷入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mtd write /tmp/mt7981-jcg_q30-fip-expand.bin FIP</span><br></pre></td></tr></table></figure>
-
-<p>刷写完毕后输入下面命令断电：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">poweroff</span><br></pre></td></tr></table></figure>
-
-<p>此时再尝试上一步的方法进入U-Boot的恢复界面即可。</p>
 ]]></content>
       <categories>
         <category>日常</category>
