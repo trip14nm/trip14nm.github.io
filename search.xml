@@ -96,15 +96,6 @@
       </categories>
   </entry>
   <entry>
-    <title>叒搬家啦</title>
-    <url>/archives/16107.html</url>
-    <content><![CDATA[<p>折腾来折腾去还是回到hexo了，这次换了<a href="https://butterfly.js.org/">butterfly</a>主题，慢慢倒腾吧。<br>老家: <a href="https://trip7nm.github.io/">冰牛奶</a></p>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-  </entry>
-  <entry>
     <title>OpenWrt NATMap 插件自定义通知脚本记录（OpenList + qBittorrent）</title>
     <url>/archives/afab375b.html</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>家庭宽带处于 NAT 环境下，无法直接获得固定公网端口。使用 OpenWrt 上的 <strong>NATMap</strong> 插件可以实现 NAT 穿透，动态获取公网 IP 和端口。每当公网端口变化时，NATMap 支持调用自定义脚本（通知脚本）来自动完成防火墙规则更新、服务配置同步等任务。</p>
@@ -259,6 +250,79 @@
 <h1 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h1><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">## Steam-Override</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,cm.steampowered.com,🎮</span> <span class="string">游戏平台</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,steampowered.com,🎮</span> <span class="string">游戏平台</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,45.121.184.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,103.10.124.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,103.10.125.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,103.28.54.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,146.66.152.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,146.66.155.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.224.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.225.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.226.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.227.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.228.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.229.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.230.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.232.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.236.0/23,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.238.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.240.0/23,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.244.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.246.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.248.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.249.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.250.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.251.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.252.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.253.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.254.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,155.133.255.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,162.254.192.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,162.254.193.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,162.254.195.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,162.254.196.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,162.254.197.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,162.254.198.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,162.254.199.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,185.25.182.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,185.25.183.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,192.69.96.0/22,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,205.196.6.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,208.64.200.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,208.64.201.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,208.64.202.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,208.64.203.0/24,🎮</span> <span class="string">游戏平台</span>  </span><br><span class="line"><span class="bullet">-</span> <span class="string">IP-CIDR,208.78.164.0/22,🎮</span> <span class="string">游戏平台</span></span><br><span class="line"><span class="comment">## Steam-Chat</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,steam-chat.com,🚀</span> <span class="string">节点选择</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,api.steampowered.com,🚀</span> <span class="string">节点选择</span></span><br><span class="line"><span class="comment">## Steam-Community</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,steamcommunity.com,🚀</span> <span class="string">节点选择</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,steamgames.com,🚀</span> <span class="string">节点选择</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,steamstatic.com,🚀</span> <span class="string">节点选择</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,steamusercontent.com,🚀</span> <span class="string">节点选择</span></span><br><span class="line"><span class="comment">## Steam-Shop</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,store.steampowered.com,🎮</span> <span class="string">游戏平台</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,valvesoftware.com,🎮</span> <span class="string">游戏平台</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,s.team,🎮</span> <span class="string">游戏平台</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN-SUFFIX,underlords.com,🎮</span> <span class="string">游戏平台</span></span><br><span class="line"><span class="comment">## Steam-Download</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,dl.steam.clngaa.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,dl.steam.ksyna.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,st.dl.bscstorage.net,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,st.dl.eccdnx.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,st.dl.pinyuncloud.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,steampipe.steamcontent.tnkjmec.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,cdn.mileweb.cs.steampowered.com.8686c.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,cdn-ws.content.steamchina.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,cdn-qc.content.steamchina.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,cdn-cdn-ali.content.steamchina.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,xz.pphimalayanrt.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,steampowered.com.8686c.com,DIRECT</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">DOMAIN,steamstatic.com.8686c.com,DIRECT</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="关于OpenClash代理端口的设置"><a href="#关于OpenClash代理端口的设置" class="headerlink" title="关于OpenClash代理端口的设置"></a>关于OpenClash代理端口的设置</h1><p>经过测试发现Steam在登录时使用的端口并非 443，而是一个 27014 到 27050 之间的随机端口，Steam的说明：<a href="https://help.steampowered.com/zh-cn/faqs/view/2EA8-4D75-DA21-31EB" target="_blank">Steam 所需端口</a>，所以OpenClash的<strong>插件设置</strong>-&gt;<strong>流量控制</strong>-&gt;<strong>仅允许常用端口流量</strong>需要设置成关闭，或者将上述范围端口加入，否则会导致登录时地区跳到中国。如果不需要指定登录地点，倒是可以直接用<strong>默认常用端口</strong>，常用的社区和商店都会使用443端口</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>OpenWrt 扩展 root 空间（extroot）笔记</title>
+    <url>/archives/e5ad1d16.html</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>OpenWrt 新系统默认的 root 分区只有几十 MB，安装插件很容易空间不足。通过新建分区并配置 extroot，可以将 root 目录迁移到更大的分区上。</p>
+<hr>
+<h2 id="第一步：新系统基础设置"><a href="#第一步：新系统基础设置" class="headerlink" title="第一步：新系统基础设置"></a>第一步：新系统基础设置</h2><p>刷写完成后进入系统，首先在 <strong>【系统】→【管理权】</strong> 页面设置登录密码和基本路由配置。</p>
+<hr>
+<h2 id="第二步：新建磁盘分区"><a href="#第二步：新建磁盘分区" class="headerlink" title="第二步：新建磁盘分区"></a>第二步：新建磁盘分区</h2><p>使用 <code>cfdisk</code> 进入磁盘分区管理界面：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cfdisk</span><br></pre></td></tr></table></figure>
+
+<p>界面中 <code>free</code> 表示空闲空间（未分配）。操作步骤如下：</p>
+<ol>
+<li>选中空闲空间，选择 <strong>【New】</strong> → 回车</li>
+<li>输入需要的分区大小 → 回车</li>
+<li>选择 <strong>【primary】</strong>（主分区）</li>
+<li>选择 <strong>【Write】</strong> 写入分区表 → 回车</li>
+<li>提示 <code>Are you sure you want to write partition table to disk?</code> → 输入 <code>yes</code> → 回车</li>
+<li>选择 <strong>【Quit】</strong> 退出</li>
+</ol>
+<p>完成后用以下命令确认新分区是否创建成功：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">fdisk -l</span><br><span class="line">lsblk</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="第三步：格式化新分区为-ext4"><a href="#第三步：格式化新分区为-ext4" class="headerlink" title="第三步：格式化新分区为 ext4"></a>第三步：格式化新分区为 ext4</h2><p>将新建的分区（假设为 <code>/dev/sda3</code>）格式化为 ext4：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 /dev/sda3</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其他可选格式：<code>mkfs.ext3</code>、<code>mkfs.f2fs</code>、<code>mkfs.vfat</code></p>
+</blockquote>
+<hr>
+<h2 id="第四步：配置挂载点"><a href="#第四步：配置挂载点" class="headerlink" title="第四步：配置挂载点"></a>第四步：配置挂载点</h2><p>在 OpenWrt Web 界面中找到挂载点配置页面。</p>
+<blockquote>
+<p>如果没有挂载点选项，先安装 <code>block-mount</code>：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">opkg install block-mount</span><br></pre></td></tr></table></figure></blockquote>
+<p>操作步骤：</p>
+<ol>
+<li>点击 <strong>【生成配置】</strong></li>
+<li>找到对应分区，点击 <strong>【编辑】</strong></li>
+<li>将挂载点设置好后点击 <strong>【保存】</strong></li>
+</ol>
+<hr>
+<h2 id="第五步：执行-extroot-数据迁移"><a href="#第五步：执行-extroot-数据迁移" class="headerlink" title="第五步：执行 extroot 数据迁移"></a>第五步：执行 extroot 数据迁移</h2><p>复制下面的命令，将 root 文件系统内容迁移到新分区，注意把 <code>/dev/sda1</code> 改为实际新建的分区（本例为 <code>/dev/sda3</code>）：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /tmp/introot</span><br><span class="line"><span class="built_in">mkdir</span> -p /tmp/extroot</span><br><span class="line">mount --<span class="built_in">bind</span> / /tmp/introot</span><br><span class="line">mount /dev/sda3 /tmp/extroot</span><br><span class="line">tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -</span><br><span class="line">umount /tmp/introot</span><br><span class="line">umount /tmp/extroot</span><br></pre></td></tr></table></figure>
+
+<p>在 SSH 中依次执行以上命令，完成后重启系统：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>重启后 root 目录即挂载到新分区，空间扩展完成。</p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>原文：<a href="https://www.cnblogs.com/meijsuger/p/18799273">Openwrt 安装&#x2F;升级&#x2F;挂载以及扩展root空间大小</a></li>
+<li>B站参考（磁盘分区操作）：<a href="https://www.bilibili.com/opus/683581390134968323">https://www.bilibili.com/opus/683581390134968323</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>OpenWrt</tag>
+        <tag>extroot</tag>
+        <tag>磁盘分区</tag>
+        <tag>ext4</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>叒搬家啦</title>
+    <url>/archives/16107.html</url>
+    <content><![CDATA[<p>折腾来折腾去还是回到hexo了，这次换了<a href="https://butterfly.js.org/">butterfly</a>主题，慢慢倒腾吧。<br>老家: <a href="https://trip7nm.github.io/">冰牛奶</a></p>
 ]]></content>
       <categories>
         <category>日常</category>
